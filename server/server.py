@@ -1,4 +1,5 @@
 import socket
+from server.deposit import deposit
 from config.config import Config
 
 def main():
@@ -16,6 +17,6 @@ def main():
         mode = dataBytes[0].decode()
 
         if mode == "1":
-          print("Deposit Mode")
+          deposit(dataBytes[1], dataBytes[2], dataBytes[3])
         elif mode == "2":
           print("Recover Mode")
