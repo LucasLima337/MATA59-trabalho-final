@@ -1,17 +1,21 @@
 import socket
+from config.config import Config
 
-HOST = "localhost"
-PORT = 9000
+def main():
+  with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+    sock.bind((Config.HOST, Config.PORT))
+    sock.listen()
+    print(f"Server listening on {Config.HOST}:{Config.PORT}")
 
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-  sock.bind((HOST, PORT))
-  sock.listen()
-  print(f"Server listening on {HOST}:{PORT}")
+    while True:
+      clientSocket, clientAddress = sock.accept()
+      print("Connected by", clientAddress)
 
-  while True:
-    clientSocket, clientAddress = sock.accept()
-    print("Connected by", clientAddress)
+      with clientSocket:
+        dataBytes = clientSocket.recv(16384).split(Config.BYTES_SPLIT_ID)
+        mode = dataBytes[0].decode()
 
-    with clientSocket:
-      dataBytes = clientSocket.recv(1024)
-      data = dataBytes.decode()
+        if mode == "1":
+          print("Deposit Mode")
+        elif mode == "2":
+          print("Recover Mode")

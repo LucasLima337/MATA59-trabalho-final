@@ -1,27 +1,26 @@
 import socket, os
-from deposit import deposit
+from client.deposit import deposit
+from config.config import Config
 
-HOST = "localhost"
-PORT = 9000
-
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-  sock.connect((HOST, PORT))
-  print(f"Connected to {HOST}:{PORT}\n")
-
+def main():
   while True:
-    print("[ 1 ] Deposit Mode")
-    print("[ 2 ] Recover Mode")
-    print("[ 0 ] Exit\n")
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+      sock.connect((Config.HOST, Config.PORT))
+      print(f"Connected to {Config.HOST}:{Config.PORT}\n")
 
-    mode = input("Enter mode or 0 to exit: ")
-    os.system("clear")
+      print("[ 1 ] Deposit Mode")
+      print("[ 2 ] Recover Mode")
+      print("[ 0 ] Exit\n")
 
-    if mode == "1":
-      deposit()
-    elif mode == "2":
-      print("Recover Mode")
-    elif mode == "0":
-      print("Exiting... bye!")
-      break
-    else:
-      print("Invalid option, try again\n")
+      mode = input("Enter mode or 0 to exit: ")
+      os.system("clear")
+
+      if mode == "1":
+        deposit(sock, mode)
+      elif mode == "2":
+        print("Recover Mode")
+      elif mode == "0":
+        print("Exiting... bye!")
+        break
+      else:
+        print("Invalid option, try again\n")
