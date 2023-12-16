@@ -40,7 +40,7 @@ No menu principal basta escolher o tipo de operação que deseja fazer, digitand
 ![Depósito de arquivo](./assets/deposit-mode.png)
 ![Replicação de arquivo](./assets/replication-mode.png)
 
-No modo de depósito, será listado todos os arquivos que estão na pasta `local`, onde o usuário deve informar qual arquivo deseja depositar no servidor, digitando o número correspondente e pressionando `Enter`. Após isso, o usuário deve informar o nível de tolerância a falhas que deseja para o arquivo, digitando o número correspondente e pressionando `Enter`.
+No modo de depósito, será listado todos os arquivos que estão na pasta `client/local`, onde o usuário deve informar qual arquivo deseja depositar no servidor, digitando o número correspondente e pressionando `Enter`. Após isso, o usuário deve informar o nível de tolerância a falhas que deseja para o arquivo, digitando o número correspondente e pressionando `Enter`.
 
 | Replicação  | Descrição                                | Pasta de armazenamento                                        |
 | ----------- | ---------------------------------------- | ------------------------------------------------------------- |
@@ -52,7 +52,7 @@ No modo de depósito, será listado todos os arquivos que estão na pasta `local
 
 ![Recuperação de arquivo](./assets/recovery-mode.png)
 
-No modo de recuperação, será listado todos os arquivos que estão na pasta `cloud/us-east1-a`, onde o usuário deve informar qual arquivo deseja recuperar do servidor, digitando o número correspondente e pressionando `Enter`.
+No modo de recuperação, será listado todos os arquivos que estão na pasta `cloud/us-east1-a`, onde o usuário deve informar qual arquivo deseja recuperar do servidor, digitando o número correspondente e pressionando `Enter`. Os arquivos recuperados serão salvos na pasta `client/recovered`.
 
 ## Arquitetura do projeto
 
