@@ -1,5 +1,7 @@
 import socket
 from server.deposit import deposit
+from server.recover import recover
+from server.files import getFiles
 from config.config import Config
 
 def main():
@@ -13,10 +15,12 @@ def main():
       print("Connected by", clientAddress)
 
       with clientSocket:
-        dataBytes = clientSocket.recv(16384).split(Config.BYTES_SPLIT_ID)
+        dataBytes = clientSocket.recv(Config.BUFFER_SIZE).split(Config.BYTES_SPLIT_ID)
         mode = dataBytes[0].decode()
 
         if mode == "1":
           deposit(dataBytes[1], dataBytes[2], dataBytes[3])
         elif mode == "2":
-          print("Recover Mode")
+          recover(clientSocket, dataBytes[1])
+        elif mode == "0":
+          getFiles(clientSocket)

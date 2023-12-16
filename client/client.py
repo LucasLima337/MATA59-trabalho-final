@@ -1,5 +1,6 @@
 import socket, os
 from client.deposit import deposit
+from client.recover import recover
 from config.config import Config
 
 def main():
@@ -18,7 +19,7 @@ def main():
       if mode == "1":
         deposit(sock, mode)
       elif mode == "2":
-        print("Recover Mode")
+        recover(sock, mode)
       elif mode == "0":
         print("Exiting... bye!")
         break
