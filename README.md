@@ -2,6 +2,11 @@
 
 Aplicação cliente-servidor em Python, utilizando a biblioteca de sockets, para realizar operações de depósito e recuperação de arquivos no modo cliente-servidor via TCP. Este projeto é 100% implementado em Python.
 
+## Integrantes
+
+- Lucas Lima
+- Matheus Salaroli
+
 ## Requisitos
 
 - Possuir instalado o Python
